@@ -1,0 +1,67 @@
+<html ng-app="pascal">
+    <head>
+        <title>Pascal's Triangle</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<style>
+table {
+    font-size: 100%;
+    line-height: 1.6;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+</style>
+    </head>
+    <body class="container">
+        <div class="jumbotron">
+            <h1 class="text-center">{{ "Pascal's" + " Triangle"}}</h1>
+            <p>Try this fun game, input an integer in the text box below 
+            and see if the triangle you get is a pascal's</p>
+        </div>
+        <div ng-controller="PascalController">
+            <form>
+                <div class="form-group">
+                    <input 
+                        class="form-control" 
+                        placeholder="Input integer" 
+                        ng-model="rows"/>
+                </div>
+            <button 
+                type="submit" 
+                class="btn btn-default" 
+                ng-click="calculateTriangle()">Magic</button>
+            </form>
+            <table style="text-align: center;">
+                <tbody>
+                    <tr ng-repeat="row in triangle">
+                        <td 
+                            ng-repeat="cell in row.line track by $index" 
+                            bgcolor="{{row.color}}" 
+                            style="width: 40px;">{{cell}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
